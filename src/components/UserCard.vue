@@ -1,4 +1,5 @@
 <template>
+  <RouterView />
   <div class="w-1/2 flex justify-center my-8 mx-auto py-4">
     <ul>
       <li v-for="(res, index) in results" :key="index">
