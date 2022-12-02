@@ -20,6 +20,7 @@
 <script lang="ts">
 import axios from "axios";
 import { defineComponent } from "vue";
+import type { RouteLocationNormalizedLoaded } from "vue-router";
 import type MyData from "./type";
 
 export default defineComponent({
@@ -34,7 +35,7 @@ export default defineComponent({
     this.load(this.$route);
   },
   methods: {
-    async load(route) {
+    async load(route: RouteLocationNormalizedLoaded) {
       this.loading = true;
       try {
         const data = await axios.get(

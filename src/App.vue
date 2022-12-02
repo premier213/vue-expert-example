@@ -18,6 +18,7 @@
     </RouterLink>
   </div>
   <RouterView />
+  <RouterView name="footer" />
 </template>
 
 <script lang="ts">

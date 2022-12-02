@@ -58,5 +58,8 @@ export default {
       this.loadById(n);
     },
   },
+  beforeRouteEnter() {
+    console.log(1);
+  },
 };
 </script>
