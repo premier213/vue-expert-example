@@ -43,7 +43,7 @@ export default {
       }
     },
     nextLink(id: number) {
-      return `/users/${id + 1}`;
+      return { name: "userById", params: { id: id + 1 } };
     },
     async loadById(route: RouteLocationNormalizedLoaded) {
       const data = await this.load();

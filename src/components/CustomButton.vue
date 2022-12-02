@@ -22,7 +22,7 @@ export default defineComponent({
   },
   methods: {
     home() {
-      this.$router.push("/");
+      this.$router.push({ name: "users" });
     },
   },
 });

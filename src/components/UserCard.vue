@@ -1,4 +1,5 @@
 <template>
+  <RouterLink :to="sort">Sort</RouterLink>
   <RouterView />
   <div class="w-1/2 flex justify-center my-8 mx-auto py-4">
     <ul>
@@ -30,24 +31,44 @@ export default defineComponent({
     };
   },
   created() {
-    this.load();
+    this.load(this.$route);
   },
   methods: {
-    async load() {
+    async load(route) {
       this.loading = true;
       try {
         const data = await axios.get(
           "https://jsonplaceholder.typicode.com/users"
         );
         if (data.status) {
+          if (route.query.sort === "ASC") {
+            data.data.sort((a: MyData, b: MyData) => {
+              const nameA = a.name.toLowerCase();
+              const nameB = b.name.toLowerCase();
+              if (nameA < nameB) {
+                return -1;
+              }
+              if (nameA > nameB) {
+                return 1;
+              }
+              return 0;
+            });
+          }
           this.results = data.data;
         }
       } catch (e) {
         console.log(e);
       }
     },
-    handleAddress() {
-      this.$router.push("users/");
+  },
+  computed: {
+    sort() {
+      return { name: "users", query: { sort: "ASC" } };
+    },
+  },
+  watch: {
+    $route(newRoute) {
+      this.load(newRoute);
     },
   },
 });

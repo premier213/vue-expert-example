@@ -5,7 +5,7 @@
   </div>
   <div class="flex justify-center p-8 bg-slate-100 gap-8 m-auto">
     <RouterLink
-      to="/users"
+      :to="usersLink"
       class="bg-violet-700 px-8 py-2 text-white rounded-md"
     >
       Users
@@ -25,6 +25,11 @@ import CustomButton from "./components/CustomButton.vue";
 export default {
   components: {
     CustomButton,
+  },
+  computed: {
+    usersLink() {
+      return { name: "users" };
+    },
   },
 };
 </script>

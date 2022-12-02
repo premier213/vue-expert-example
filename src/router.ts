@@ -7,13 +7,14 @@ import NotfoundPage from "./pages/NotfoundPage.vue";
 const router = createRouter({
   routes: [
     {
+      name: "users",
       path: "/users",
       component: UserCardVue,
       alias: "/",
-      children: [{ path: ":id", component: AddressPage }],
+      children: [{ name: "userById", path: ":id", component: AddressPage }],
     },
-    { path: "/about", component: AboutPage },
-    { path: "/:notFound(.*)", component: NotfoundPage },
+    { name: "about", path: "/about", component: AboutPage },
+    { name: "notFound", path: "/:notFound(.*)", component: NotfoundPage },
   ],
   history: createWebHistory(),
   linkActiveClass: "active",
